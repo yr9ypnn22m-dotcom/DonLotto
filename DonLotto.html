@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>DonLotto</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="wrapper">
+    <div id="title">🎀 DonLotto 🎀</div>
+    <div id="subtitle">
+      Zuerst Zahlen, dann Zusatz (Sterne oder Zusatzzahlen) ✨
+    </div>
+    <div id="gameContainer">
+      <canvas id="game" width="800" height="500"></canvas>
+      <div id="ui">
+        <div id="controlsLeft">
+          <div id="buttonsRow">
+            <button id="drawButton">Ziehung starten 💨</button>
+	    <button id="slowMoButton">Slow-Mo: Aus 🎬</button>
+            <button id="resetButton">Neu mischen ♻️</button>
+	    <button id="muteButton">🔊 Sound: An</button>
+          </div>
+          <div id="configRow">
+            <div class="configLine">
+              <label for="presetSelect"><strong>Vorlage:</strong></label>
+              <select id="presetSelect">
+                <option value="custom">Eigene Einstellungen</option>
+                <option value="euromillions">Euromillions (5 aus 50, 2 aus 12)</option>
+                <option value="eurojackpot">Eurojackpot (5 aus 50, 2 aus 12)</option>
+                <option value="swisslotto">Swiss Lotto (6 aus 42, 1 aus 6)</option>
+              </select>
+            </div>
+            <div class="configLine">
+              <strong>Zahlen:</strong>
+              <input type="number" id="ballDrawInput"  min="0" max="200" value="6">
+              <span>aus</span>
+              <input type="number" id="ballCountInput" min="0" max="200" value="50">
+            </div>
+            <div class="configLine">
+              <strong>Zusatz:</strong>
+              <input type="number" id="starDrawInput"  min="0" max="200" value="2">
+              <span>aus</span>
+              <input type="number" id="starCountInput" min="0" max="200" value="10">
+              <select id="secondTypeSelect">
+                <option value="star">Sterne (gold)</option>
+                <option value="extra">Zusatzzahlen (goldene Kugeln)</option>
+              </select>
+            </div>
+            <div class="configLine">
+              <strong>Wirbelzeit:</strong>
+              <input type="number" id="mixTimeInput" min="1" max="60" value="5">
+              <span>s</span>
+            </div>
+          </div>
+        </div>
+        <div id="results">
+          <div id="lastDrawn">Letzte Ziehung: <span>–</span></div>
+          <div class="resultRow" id="ballsRow">
+            <span class="resultRowLabel">Zahlen:</span>
+            <span class="chip empty">–</span>
+          </div>
+          <div class="resultRow" id="starsRow">
+            <span class="resultRowLabel" id="secondLabel">Zusatz:</span>
+            <span id="secondValues">
+              <span class="chip starChip empty">–</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sounds (Dateien selbst bereitstellen) -->
+  <audio id="soundAir"    src="wind.wav" loop></audio>
+  <audio id="soundFlap"   src="flap.wav"></audio>
+  <audio id="soundBall"   src="drop.wav"></audio>
+  <audio id="soundFanfare" src="fanfare.wav"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
